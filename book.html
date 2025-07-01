@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+    nav {
+      background-color: #fafafa;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .book-details-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      display: flex;
+      gap: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .book-details-container img {
+      width: 250px;
+      border-radius: 8px;
+    }
+    .book-info h2 {
+      font-size: 1.8rem;
+      color: #333;
+    }
+    .stars i {
+      color: #f8b400;
+    }
+    .price {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+    .add-to-cart {
+      background-color: #7342d6;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .add-to-cart:hover {
+      background-color: #5e2eb8;
+    }
+
+    .book {
+  width: 150px;
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  text-align: center;
+}
+.book img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.nav-btn {
+  text-decoration: none;
+  color: #7342d6;
+  font-weight: 500;
+}
+
+.nav-btn--primary {
+  border: 2px solid #7342d6;
+  border-radius: 5px;
+  padding: 6px 14px;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  color: #7342d6;
+}
+
+.nav-btn {
+  position: relative;
+  text-decoration: none;
+  color: #7342d6;
+  font-weight: 500;
+  padding: 6px 14px;
+  transition: color 0.3s ease;
+}
+
+.nav-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background-color: #7342d6;
+  transition: width 0.3s ease;
+}
+
+.nav-btn:hover::after {
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+
+  <nav style="background-color: #fafafa; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
+  <img class="logo" src="assets/Library.svg" alt="Library Logo" style="height: 40px;" />
+  <ul class="nav__list" style="list-style: none; display: flex; align-items: center; gap: 1rem; margin: 0;">
+  <li>
+    <a href="index.html" class="nav-btn" style="text-decoration: none; color: #7342d6; font-weight: 500;">Home</a>
+  </li>
+  <li>
+    <a href="#" class="nav-btn" style="color: #7342d6; text-decoration: none;">Books</a>
+  </li>
+  <li>
+    <a href="#" class="nav-btn" style="font-size: 1.2rem; color: #7342d6;"><i class="fa-solid fa-cart-shopping"></i></a>
+  </li>
+</ul>
+</nav>
+
+  <div style="max-width: 1200px; margin: 2rem auto 0; padding: 0 2rem;">
+  <button onclick="history.back()" style="
+    background-color: #7342d6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  ">
+    ← Back
+  </button>
+</div>
+
+  <section class="book-details-container">
+  <img id="book-img" src="" alt="Book Cover" />
+  <div class="book-info">
+    <h2 id="book-title">Book Title</h2>
+    <div id="book-stars" class="stars"></div>
+    <div class="price">
+      <span id="book-original" class="original-price" style="text-decoration: line-through; color: #888; margin-right: 8px;"></span>
+      <span id="book-price" class="highlight"></span>
+    </div>
+    <h4>Summary</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu erat vitae erat consequat tincidunt.</p>
+    <button class="add-to-cart">Add to cart</button>
+  </div>
+</section>
+
+<section style="max-width: 1200px; margin: 3rem auto; padding: 0 1rem;">
+  <h2 style="margin-bottom: 1rem; color: #333;">Recommended Books</h2>
+  <div class="recommended-books-row" style="display: flex; gap: 1.5rem; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 1rem;">
+    
+    <div class="book" data-title="Atomic Habits" data-price="39.00" data-rating="5" style="width: 150px; flex: 0 0 auto; font-size: 0.85rem; text-align: center;">
+      <img src="assets/atomic habits.jpg" alt="Atomic Habits" style="width: 100%; border-radius: 6px;" />
+      <h3>Atomic Habits</h3>
+      <div class="stars" style="color: #f8b400;">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="highlight">$39.00</span></p>
+    </div>
+
+    <div class="book" data-title="Can't Hurt Me" data-price="28.95" data-rating="4.5" style="width: 150px; flex: 0 0 auto; font-size: 0.85rem; text-align: center;">
+      <img src="assets/david goggins.jpeg" alt="Can't Hurt Me" style="width: 100%; border-radius: 6px;" />
+      <h3>Can't Hurt Me</h3>
+      <div class="stars" style="color: #f8b400;">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+      </div>
+      <p><span class="highlight">$28.95</span></p>
+    </div>
+
+    <div class="book" data-title="The 10x Rule" data-price="32.00" data-rating="4" style="width: 150px; flex: 0 0 auto; font-size: 0.85rem; text-align: center;">
+      <img src="assets/book-1.jpeg" alt="The 10x Rule" style="width: 100%; border-radius: 6px;" />
+      <h3>The 10x Rule</h3>
+      <div class="stars" style="color: #f8b400;">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="highlight">$32.00</span></p>
+    </div>
+
+    <div class="book" data-title="Sell or Be Sold" data-price="12.50" data-rating="4" style="width: 150px; flex: 0 0 auto; font-size: 0.85rem; text-align: center;">
+      <img src="assets/book-2.jpeg" alt="Sell or Be Sold" style="width: 100%; border-radius: 6px;" />
+      <h3>Sell or Be Sold</h3>
+      <div class="stars" style="color: #f8b400;">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="original-price" style="text-decoration: line-through; color: #888;">$70.00</span> <span class="highlight">$12.50</span></p>
+    </div>
+
+  </div>
+</section>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const book = JSON.parse(localStorage.getItem("selectedBook"));
+
+    if (book) {
+      document.getElementById("book-title").textContent = book.title;
+      document.getElementById("book-img").src = book.img;
+      document.getElementById("book-price").textContent = `$${book.price}`;
+
+      if (book.originalPrice) {
+        document.getElementById("book-original").textContent = book.originalPrice;
+      }
+
+      const rating = parseFloat(book.rating);
+      const starsContainer = document.getElementById("book-stars");
+      starsContainer.innerHTML = "";
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 >= 0.5;
+
+      for (let i = 0; i < fullStars; i++) {
+        starsContainer.innerHTML += '<i class="fas fa-star"></i>';
+      }
+
+      if (hasHalfStar) {
+        starsContainer.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+      }
+    }
+
+    // Recommended books click
+    document.querySelectorAll('.book').forEach(book => {
+      book.addEventListener('click', () => {
+        const title = book.dataset.title;
+        const price = book.dataset.price;
+        const rating = book.dataset.rating;
+        const img = book.querySelector('img').getAttribute('src');
+        const original = book.querySelector('.original-price')?.textContent || null;
+
+        const bookData = {
+          title,
+          price,
+          rating,
+          img,
+          originalPrice: original
+        };
+
+        localStorage.setItem("selectedBook", JSON.stringify(bookData));
+        window.location.href = "book.html";
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

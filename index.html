@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* === GLOBAL RESET === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* === NAVBAR === */
+nav {
+  width: 100%;
+  height: 80px;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  height: 40px;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #7342d6;
+  font-weight: 500;
+  padding: 8px 16px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav__link:hover {
+  color: #5e2eb8;
+  transform: translateY(-2px);
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background-color: #7342d6;
+  transition: width 0.3s ease;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+.nav__link--primary::after {
+  display: none;
+}
+
+.nav__link--primary {
+  color: #7342d6;
+  border: 2px solid #7342d6;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav__link--primary:hover {
+  background-color: #5e2eb8;
+  transform: scale(1.05);
+  color: white;
+}
+
+/* === HEADER SECTION === */
+.books-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+}
+
+.books-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.highlight {
+  color: #7342d6;
+  font-weight: 600;
+}
+
+.sort-dropdown {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* === BOOK GRID === */
+.featured-books__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.book {
+  background-color: transparent;
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 200px;
+  text-align: left;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.book img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.book h3 {
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+.book .stars {
+  color: #f8b400;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.book p {
+  font-size: 0.875rem;
+  margin: 0.1rem 0;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 0.5rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .featured-books__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-books__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+#ds {
+  background-color: #333; /* Dark gray */
+  padding: 4rem 0;
+  color: #ccc;
+  text-align: center;
+}
+
+#ds .section_title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+.link-label {
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  color: #ccc;
+}
+
+.ds-footer p {
+  color: #aaa;
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+  </style>
+</head>
+<body>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sortSelect = document.getElementById('sortSelect');
+  const featuredContainer = document.querySelector('.featured-books__container');
+  const latestContainer = document.querySelector('.latest-books__container');
+
+  // Sort function
+  function sortBooks(container, sortType) {
+    const books = Array.from(container.querySelectorAll(".book"));
+    let sortedBooks = [...books];
+
+    if (sortType === "title-a-z") {
+      sortedBooks.sort((a, b) =>
+        a.dataset.title.localeCompare(b.dataset.title)
+      );
+    } else if (sortType === "title-z-a") {
+      sortedBooks.sort((a, b) =>
+        b.dataset.title.localeCompare(a.dataset.title)
+      );
+    } else if (sortType === "price-low-high") {
+      sortedBooks.sort((a, b) =>
+        parseFloat(a.dataset.price) - parseFloat(b.dataset.price)
+      );
+    } else if (sortType === "price-high-low") {
+      sortedBooks.sort((a, b) =>
+        parseFloat(b.dataset.price) - parseFloat(a.dataset.price)
+      );
+    }
+
+    sortedBooks.forEach(book => container.appendChild(book));
+  }
+
+  // Sorting event
+  if (sortSelect) {
+    sortSelect.addEventListener("change", (e) => {
+      const sortType = e.target.value;
+      if (featuredContainer) sortBooks(featuredContainer, sortType);
+      if (latestContainer) sortBooks(latestContainer, sortType);
+    });
+  }
+
+  // Book click to go to details
+  document.querySelectorAll('.book').forEach(book => {
+    book.addEventListener('click', () => {
+      const title = book.dataset.title;
+      const price = book.dataset.price;
+      const rating = book.dataset.rating;
+      const img = book.querySelector('img').getAttribute('src');
+      const original = book.querySelector('.original-price')?.textContent || null;
+
+      const bookData = {
+        title,
+        price,
+        rating,
+        img,
+        originalPrice: original
+      };
+
+      localStorage.setItem("selectedBook", JSON.stringify(bookData));
+      window.location.href = "book.html";
+
+    });
+  });
+});
+</script>
+
+
+  <nav>
+    <img class="logo" src="assets/Library.svg" alt="Library Logo" />
+    <ul class="nav__list">
+      <li><a href="#" class="nav__link">Home</a></li>
+      <li><a href="#" class="nav__link">Contact</a></li>
+      <li><a href="#" class="nav__link nav__link--primary">Books</a></li>
+    </ul>
+  </nav>
+
+  <div class="books-header">
+  <h2 class="books-title">All <span class="highlight">Books</span></h2>
+<select id="sortSelect" class="sort-dropdown">    <option value="">Sort</option>
+    <option value="price-low-high">Price: Low to High</option>
+    <option value="price-high-low">Price: High to Low</option>
+    <option value="title-a-z">Title: A-Z</option>
+    <option value="title-z-a">Title: Z-A</option>
+  </select>
+</div>
+
+  <section id="featured-books">
+  <div class="featured-books__container">
+
+    <div class="book" data-title="Cracking the Coding Interview" data-price="14.95" data-rating="4.5">
+      <img src="assets/crack the coding interview.png" alt="Cracking the Coding Interview" />
+      <h3>Cracking the Coding Interview</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p><span class="original-price">$49.95</span> <span class="highlight">$14.95</span></p>
+    </div>
+
+    <div class="book" data-title="Atomic Habits" data-price="39.00" data-rating="5">
+      <img src="assets/atomic habits.jpg" alt="Atomic Habits" />
+      <h3>Atomic Habits</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p><span class="highlight">$39.00</span></p>
+    </div>
+
+    <div class="book" data-title="Can't Hurt Me" data-price="28.95" data-rating="4.5">
+      <img src="assets/david goggins.jpeg" alt="Can't Hurt Me" />
+      <h3>Can't Hurt Me</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p><span class="highlight">$28.95</span></p>
+    </div>
+
+    <div class="book" data-title="Deep Work" data-price="12.00" data-rating="5">
+      <img src="assets/deep work.jpeg" alt="Deep Work" />
+      <h3>Deep Work</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p><span class="original-price">$29.00</span> <span class="highlight">$12.00</span></p>
+    </div>
+
+    <div class="book" data-title="Rich Dad Poor Dad" data-price="12.50" data-rating="4.5">
+      <img src="assets/book-3.jpeg" alt="Rich Dad Poor Dad" />
+      <h3>Rich Dad Poor Dad</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p><span class="original-price">$70.00</span> <span class="highlight">$12.50</span></p>
+    </div>
+
+    <div class="book" data-title="Cashflow Quadrant" data-price="10.00" data-rating="4">
+      <img src="assets/book-4.jpeg" alt="Cashflow Quadrant" />
+      <h3>Cashflow Quadrant</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="original-price">$11.00</span> <span class="highlight">$10.00</span></p>
+    </div>
+
+    <div class="book" data-title="Be Obsessed or Be Average" data-price="17.00" data-rating="4">
+      <img src="assets/book-2.jpeg" alt="Be Obsessed or Be Average" />
+      <h3>Be Obsessed or Be Average</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="original-price">$32.00</span> <span class="highlight">$17.00</span></p>
+    </div>
+
+    <div class="book" data-title="The 10x Rule" data-price="19.00" data-rating="4.5">
+      <img src="assets/book-1.jpeg" alt="The 10x Rule" />
+      <h3>The 10x Rule</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p><span class="original-price">$44.00</span> <span class="highlight">$19.00</span></p>
+    </div>
+
+    <div class="book" data-title="Mastery" data-price="30.00" data-rating="4.5">
+      <img src="assets/book-8.jpeg" alt="Mastery" />
+      <h3>Mastery</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p><span class="highlight">$30.00</span></p>
+    </div>
+
+    <div class="book" data-title="Your Next Five Moves" data-price="40.00" data-rating="4">
+      <img src="assets/book-7.jpg" alt="Your Next Five Moves" />
+      <h3>Your Next Five Moves</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="highlight">$40.00</span></p>
+    </div>
+
+    <div class="book" data-title="The 5 Second Rule" data-price="35.00" data-rating="4.8">
+      <img src="assets/book-6.jpeg" alt="The 5 Second Rule" />
+      <h3>The 5 Second Rule</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p><span class="highlight">$35.00</span></p>
+    </div>
+
+    <div class="book" data-title="48 Laws of Power" data-price="17.95" data-rating="4.5">
+      <img src="assets/book-5.jpeg" alt="48 Laws of Power" />
+      <h3>48 Laws of Power</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p><span class="original-price">$38.00</span> <span class="highlight">$17.95</span></p>
+    </div>
+
+  </div>
+</section>
+
+  <section id="ds">
+  <div class="container">
+    <div class="row">
+      <h1 class="section_title">Library</h1>
+
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <i class="fa-solid fa-house"></i>
+          <span class="link-label">Home</span>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fa-solid fa-info"></i>
+          <span class="link-label">About</span>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fa-solid fa-bookmark"></i>
+          <span class="link-label">Books</span>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fa-solid fa-comments"></i>
+          <span class="link-label">Contacts</span>
+        </a>
+      </div>
+
+      <div class="ds-footer">
+        <p>Thank you for visiting my portfolio. Let's connect!</p>
+        <p>© 2025 Library</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
